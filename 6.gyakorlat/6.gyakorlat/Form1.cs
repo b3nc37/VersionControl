@@ -24,23 +24,30 @@ namespace _6.gyakorlat
         public Form1()
         {
             InitializeComponent();
+            Refreshdata();
+
+        }
+
+        private void Refreshdata()
+        {
+            Rates.Clear();
             GetExchangeRates();
             Xmlfeldolgozas();
             Diagram();
-
         }
 
         private void GetExchangeRates()
         {
             dataGridView1.DataSource = Rates;
+            
 
             var mnbService = new MNBArfolyamServiceSoapClient();
 
             var request = new GetExchangeRatesRequestBody()
             {
                 currencyNames = "EUR",
-                startDate = "2020-01-01",
-                endDate = "2020-06-30"
+                startDate = dateTimePicker1.Value.ToString(),
+                endDate = dateTimePicker2.Value.ToString()
             };
 
             var response = mnbService.GetExchangeRates(request);
@@ -91,6 +98,21 @@ namespace _6.gyakorlat
             chartArea.AxisX.MajorGrid.Enabled = false;
             chartArea.AxisY.MajorGrid.Enabled = false;
             chartArea.AxisY.IsStartedFromZero = false;
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            Refreshdata();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            Refreshdata();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Refreshdata();
         }
     }
 }
