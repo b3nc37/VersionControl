@@ -18,13 +18,31 @@ namespace _6.gyakorlat
     {
 
         BindingList<RateData> Rates = new BindingList<RateData>();
+        //BindingList<string> Currencies = new BindingList<string>();
+        
         public string result;
 
 
         public Form1()
         {
             InitializeComponent();
+            Getcurrencies();
             Refreshdata();
+
+        }
+
+
+        private void Getcurrencies()
+        {
+            //comboBox1.DataSource = Currencies;
+            //var mnbService = new MNBArfolyamServiceSoapClient();
+
+            //var request = new GetCurrenciesRequestBody()
+            //{ };
+            //var response = mnbService.GetCurrencies(request);
+            //var result = response.GetCurrenciesResult;
+
+
 
         }
 
@@ -40,12 +58,13 @@ namespace _6.gyakorlat
         {
             dataGridView1.DataSource = Rates;
             
+            
 
             var mnbService = new MNBArfolyamServiceSoapClient();
 
             var request = new GetExchangeRatesRequestBody()
             {
-                currencyNames = "EUR",
+                currencyNames = comboBox1.SelectedItem.ToString(),
                 startDate = dateTimePicker1.Value.ToString(),
                 endDate = dateTimePicker2.Value.ToString()
             };
