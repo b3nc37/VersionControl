@@ -21,14 +21,9 @@ namespace _7.gyakorlat
         public Form1()
         {
             InitializeComponent();
-            Population = GetPopulation(@"C:\Temp\nép.csv");
+            Population = GetPopulation(textBox1.Text);
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
-            Szimulacio();
-           
-
-
-
 
         }
         private void SimStep(int year, Person person)
@@ -66,9 +61,9 @@ namespace _7.gyakorlat
             }
         }
 
-            public void Szimulacio()
+        public void Simulation()
         {
-            for (int year = 2005; year <= 2024; year++)
+            for (int year = 2005; year <= numericUpDown1.Value; year++)
             {
 
                 for (int i = 0; i < Population.Count; i++)
@@ -86,6 +81,14 @@ namespace _7.gyakorlat
                 
             }
         }
+
+        public void DisplayResults()
+        {
+
+        }
+
+        
+
 
 
         public List<Person> GetPopulation(string csvpath)
@@ -152,6 +155,23 @@ namespace _7.gyakorlat
             }
 
             return deathprobabilities;
+        }
+
+        private void startButton_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
+            Simulation();
+            DisplayResults();
+        }
+
+        private void browseButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog od = new OpenFileDialog();
+            if (od.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            else textBox1.Text = od.FileName;
         }
     }
 }
