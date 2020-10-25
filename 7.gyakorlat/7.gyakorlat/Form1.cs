@@ -17,7 +17,12 @@ namespace _7.gyakorlat
         List<Person> Population = new List<Person>();
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
+
         Random rng = new Random(1234);
+
+        List<int> Female = new List<int>();
+        List<int> Male = new List<int>();
+
         public Form1()
         {
             InitializeComponent();
@@ -77,13 +82,27 @@ namespace _7.gyakorlat
                 int nbrOfFemales = (from x in Population
                                     where x.Gender == Gender.Female && x.IsAlive
                                     select x).Count();
+
+                Female.Add(nbrOfFemales);
+                Male.Add(nbrOfMales);
+
                 Console.WriteLine(string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
+
                 
+               
+
             }
         }
 
         public void DisplayResults()
         {
+            var i = 0;
+            for (int year = 2005; year <= numericUpDown1.Value; year++)
+            {
+                richTextBox1.AppendText(string.Format("Szimulációs év: {0} \n \t Fiúk {1} \n \t Lányok:{2} \n \n",year,Male[i],Female[i]));
+                i++;
+
+            }
 
         }
 
@@ -160,6 +179,8 @@ namespace _7.gyakorlat
         private void startButton_Click(object sender, EventArgs e)
         {
             richTextBox1.Clear();
+            Female.Clear();
+            Male.Clear();
             Simulation();
             DisplayResults();
         }
@@ -171,7 +192,7 @@ namespace _7.gyakorlat
             {
                 return;
             }
-            else textBox1.Text = od.FileName;
+            textBox1.Text = od.FileName;
         }
     }
 }
