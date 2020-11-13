@@ -36,6 +36,9 @@
             this.ballButton = new System.Windows.Forms.Button();
             this.lblNext = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.presentButton = new System.Windows.Forms.Button();
+            this.boxcolorButton = new System.Windows.Forms.Button();
+            this.ribboncolorButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -81,7 +84,7 @@
             // lblNext
             // 
             this.lblNext.AutoSize = true;
-            this.lblNext.Location = new System.Drawing.Point(309, 46);
+            this.lblNext.Location = new System.Drawing.Point(419, 46);
             this.lblNext.Name = "lblNext";
             this.lblNext.Size = new System.Drawing.Size(89, 17);
             this.lblNext.TabIndex = 3;
@@ -97,11 +100,44 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // presentButton
+            // 
+            this.presentButton.Location = new System.Drawing.Point(296, 46);
+            this.presentButton.Name = "presentButton";
+            this.presentButton.Size = new System.Drawing.Size(102, 52);
+            this.presentButton.TabIndex = 5;
+            this.presentButton.Text = "PRESENT";
+            this.presentButton.UseVisualStyleBackColor = true;
+            this.presentButton.Click += new System.EventHandler(this.presentButton_Click);
+            // 
+            // boxcolorButton
+            // 
+            this.boxcolorButton.BackColor = System.Drawing.Color.Aqua;
+            this.boxcolorButton.Location = new System.Drawing.Point(296, 105);
+            this.boxcolorButton.Name = "boxcolorButton";
+            this.boxcolorButton.Size = new System.Drawing.Size(102, 23);
+            this.boxcolorButton.TabIndex = 6;
+            this.boxcolorButton.UseVisualStyleBackColor = false;
+            this.boxcolorButton.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // ribboncolorButton
+            // 
+            this.ribboncolorButton.BackColor = System.Drawing.Color.Yellow;
+            this.ribboncolorButton.Location = new System.Drawing.Point(296, 134);
+            this.ribboncolorButton.Name = "ribboncolorButton";
+            this.ribboncolorButton.Size = new System.Drawing.Size(102, 23);
+            this.ribboncolorButton.TabIndex = 7;
+            this.ribboncolorButton.UseVisualStyleBackColor = false;
+            this.ribboncolorButton.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ribboncolorButton);
+            this.Controls.Add(this.boxcolorButton);
+            this.Controls.Add(this.presentButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblNext);
             this.Controls.Add(this.ballButton);
@@ -123,6 +159,9 @@
         private System.Windows.Forms.Button ballButton;
         private System.Windows.Forms.Label lblNext;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button presentButton;
+        private System.Windows.Forms.Button boxcolorButton;
+        private System.Windows.Forms.Button ribboncolorButton;
     }
 }
 

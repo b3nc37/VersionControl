@@ -98,5 +98,14 @@ namespace _8.gyakorlat
 
             
         }
+
+        private void presentButton_Click(object sender, EventArgs e)
+        {
+            Factory = new PresentFactory
+            {
+                BoxColor = boxcolorButton.BackColor,
+                RibbonColor=ribboncolorButton.BackColor
+            };
+        }
     }
 }
