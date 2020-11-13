@@ -70,7 +70,10 @@ namespace _8.gyakorlat
 
         private void ballButton_Click(object sender, EventArgs e)
         {
-            Factory = new BallFactory();
+            Factory = new BallFactory
+            {
+                BallColor = button1.BackColor
+            };
         }
 
         private void DisplayNext()
@@ -92,6 +95,8 @@ namespace _8.gyakorlat
             if (colorPicker.ShowDialog() != DialogResult.OK)
                 return;
             button.BackColor = colorPicker.Color;
+
+            
         }
     }
 }
