@@ -1,4 +1,5 @@
-﻿using _8.gyakorlat.Entities;
+﻿using _8.gyakorlat.Abstarctions;
+using _8.gyakorlat.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +15,9 @@ namespace _8.gyakorlat
     public partial class Form1 : Form
 
     {
-        private List<Ball> _balls = new List<Ball>();
-        private BallFactory _factory;
-        public BallFactory Factory
+        private List<Toy> _toys = new List<Toy>();
+        private IToyFactory _factory;
+        public IToyFactory Factory
         {
             get { return _factory; }
             set { _factory = value; }
@@ -31,29 +32,29 @@ namespace _8.gyakorlat
 
         private void createTimer_Tick(object sender, EventArgs e)
         {
-            var ball = Factory.CreateNew();
-            _balls.Add(ball);
-            ball.Left = -ball.Width;
-            mainPanel.Controls.Add(ball);
+            var toy = Factory.CreateNew();
+            _toys.Add(toy);
+            toy.Left = -toy.Width;
+            mainPanel.Controls.Add(toy);
         }
 
         private void conveyorTimer_Tick(object sender, EventArgs e)
         {
             var maxPosition = 0;
-            foreach (var ball in _balls)
+            foreach (var toy in _toys)
             {
-                ball.MoveToy();
-                if (ball.Left>maxPosition)
+                toy.MoveToy();
+                if (toy.Left>maxPosition)
                 {
-                    maxPosition = ball.Left;
+                    maxPosition = toy.Left;
                 }
             }
 
             if (maxPosition > 1000)
             {
-                var oldestBall = _balls[0];
-                mainPanel.Controls.Remove(oldestBall);
-                _balls.Remove(oldestBall);
+                var oldesttoy = _toys[0];
+                mainPanel.Controls.Remove(oldesttoy);
+                _toys.Remove(oldesttoy);
             }
         }
     }
