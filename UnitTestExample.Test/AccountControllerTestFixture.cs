@@ -40,7 +40,7 @@ namespace UnitTestExample.Test
 
         [Test,
          TestCase("proba@proba.hu", "Teszt1234"),
-         TestCase("proba123@teszt.hu", "Proba4567")]
+         TestCase("proba123@teszt.hu", "Proba1234")]
         public void TestRegisterHappyPath(string email, string password)
         {
             var accountController = new AccountController();
@@ -58,7 +58,8 @@ namespace UnitTestExample.Test
             TestCase("irf@uni-corvinus.hu", "ABCD1234"),
             TestCase("irf@uni-corvinus.hu", "abcdABCD"),
             TestCase("irf@uni-corvinus.hu", "Ab1234"),]
-          public void TestRegisterValidateException(string email, string password)
+
+       public void TestRegisterValidateException(string email, string password)
         {
             var accountController = new AccountController();
             try
